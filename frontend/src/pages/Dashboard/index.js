@@ -26,7 +26,7 @@ export default function Dashboard() {
               backgroundImage:`url(${spot.thumbnail_url})`
             }} />
             <strong>{spot.company}</strong>
-            <span>{spot.price ? `R$${spot.price}/dia` : `GRATUITO`}</span>
+            <span>{spot.price ? `R$${spot.price},00/dia` : `GRATUITO`}</span>
           </li>
         ))}
       </ul>
