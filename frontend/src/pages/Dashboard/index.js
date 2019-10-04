@@ -15,8 +15,7 @@ export default function Dashboard() {
       setSpots(response.data)
     }
     loadSpots();
-  }, []); //array vazio, vai executar somente uma vez, [filter]
-
+  }, []);
   return (
     <>
       <ul className="spot-list">
