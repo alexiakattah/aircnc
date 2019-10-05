@@ -2,9 +2,18 @@ import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import api from "../../services/api";
 import './styles.css'
+import socketio from 'socket.io-client'
 
 export default function Dashboard() {
   const [spots, setSpots] = useState([]);
+
+  useEffect(() => {
+    const socket = socketio('http://192.168.2.105:3333')
+    socket.on('message', data => {
+      console.log(data)
+    })
+  
+  }, []);
 
   useEffect(() => {
     async function loadSpots() {
@@ -12,10 +21,11 @@ export default function Dashboard() {
       const response = await api.get("/dashboard", {
         headers: { user_id }
       });
-      setSpots(response.data)
+      setSpots(response.data);
     }
     loadSpots();
   }, []);
+
   return (
     <>
       <ul className="spot-list">
